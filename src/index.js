@@ -5,9 +5,25 @@ import * as serviceWorker from './serviceWorker';
 // import bootstrap css
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+// import redux stuff
+import { Provider } from 'react-redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import reduxPromiseMiddleware from 'redux-promise';
+
+// combine reducers
+const reducers = combineReducers({
+
+});
+
+const store = {}
+
+const middlewares = applyMiddleware(reduxPromiseMiddleware);
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={createStore(reducers, store, middlewares)}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
