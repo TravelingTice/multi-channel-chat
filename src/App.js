@@ -1,8 +1,21 @@
 import React from 'react';
+import { Container, Row, Col } from 'reactstrap';
+import ChannelList from './containers/ChannelList';
+import MessageList from './containers/MessageList';
 
 const App = () => {
   return (
-    <div className="test">test</div>
+    <Container fluid>
+      <Row>
+        <Col xs="3">
+          <ChannelList />
+        </Col>
+
+        <Col xs="9">
+          <MessageList />
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
