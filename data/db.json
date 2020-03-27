@@ -1,12 +1,30 @@
-[
-  {
-    "author": "Tice",
-    "content": "Hey there! Thanks for coming on! 😁",
-    "channel": "main"
-  },
-  {
-    "author": "Jolanda",
-    "content": "No worries 🦐",
-    "channel": "main"
-  }
-]
+{
+  "messages": [
+    {
+      "id": 1,
+      "author": "Tice",
+      "content": "Hey there! Thanks for coming on! 😁",
+      "channel": 1
+    },
+    {
+      "id": 2,
+      "author": "Jolanda",
+      "content": "No worries 🦐",
+      "channel": 1
+    }
+  ],
+  "channels": [
+    {
+      "id": 1,
+      "name": "main"
+    },
+    {
+      "id": 2,
+      "name": "development"
+    },
+    {
+      "id": 3,
+      "name": "production"
+    }
+  ]
+}
