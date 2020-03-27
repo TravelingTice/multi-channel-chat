@@ -1,10 +1,12 @@
 [
   {
     "author": "Tice",
-    "content": "Hey there! Thanks for coming on! 😁"
+    "content": "Hey there! Thanks for coming on! 😁",
+    "channel": "main"
   },
   {
     "author": "Jolanda",
-    "content": "No worries 🦐"
+    "content": "No worries 🦐",
+    "channel": "main"
   }
 ]
