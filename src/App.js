@@ -1,19 +1,30 @@
 import React from 'react';
+import styled from 'styled-components';
 import { Container, Row, Col } from 'reactstrap';
 import ChannelList from './containers/ChannelList';
 import MessageList from './containers/MessageList';
+
+const LeftPanel = styled(Col)`
+  background-color: #3D3B3C;
+  min-height: 100vh;
+`;
+
+const RightPanel = styled(Col)`
+  background-color: #323031;
+  min-height: 100vh;
+`;
 
 const App = () => {
   return (
     <Container fluid>
       <Row>
-        <Col xs="3">
+        <LeftPanel xs="3">
           <ChannelList />
-        </Col>
+        </LeftPanel>
 
-        <Col xs="9">
+        <RightPanel xs="9">
           <MessageList />
-        </Col>
+        </RightPanel>
       </Row>
     </Container>
   );
