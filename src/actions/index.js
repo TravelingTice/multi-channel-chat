@@ -1,5 +1,6 @@
 export const SET_MESSAGES = 'SET_MESSAGES';
 export const SET_CHANNELS = 'SET_CHANNELS';
+export const SET_SELECTED_CHANNEL = 'SET_SELECTED_CHANNEL';
 const API = 'http://localhost:3000';
 
 export function setMessages() {
@@ -26,4 +27,11 @@ export function setChannels() {
         payload: data
       }
     });
+}
+
+export function setSelectedChannel(channel) {
+  return {
+    type: SET_SELECTED_CHANNEL,
+    payload: channel
+  }
 }
