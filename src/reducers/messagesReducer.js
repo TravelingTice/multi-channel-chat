@@ -1,4 +1,4 @@
-import { SET_MESSAGES } from '../actions';
+import { SET_MESSAGES, SEND_MESSAGE } from '../actions';
 
 export default function(state, action) {
   if (state === undefined) return [];
@@ -6,6 +6,8 @@ export default function(state, action) {
   switch (action.type) {
     case SET_MESSAGES:
       return action.payload;
+    case SEND_MESSAGE:
+      return state + [action.payload]
     default:
       return state;
   }
