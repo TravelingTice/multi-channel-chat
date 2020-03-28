@@ -5,12 +5,25 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { setChannels } from '../actions';
 
+const ListContainer = styled.div`
+  padding: 20px;
+`;
+
 const Ul = styled.ul`
 
 `;
 
 const MenuItem = styled.li`
-
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  &.active {
+    background-color: rgba(255,255,255,.1);
+  }
+  &:hover {
+    background-color: rgba(255,255,255,.1);
+  }
 `;
 
 class ChannelList extends React.Component {
@@ -19,13 +32,16 @@ class ChannelList extends React.Component {
   }
 
   render () {
-    const { channels } = this.props;
+    const { channels, selectedChannel } = this.props;
     return (
-      <Ul>
-        {channels.map(channel => (
-          <MenuItem key={channel.id}>{channel.name}</MenuItem>
-        ))}
-      </Ul>
+      <ListContainer>
+        <h3>Channels</h3>
+        <Ul>
+          {channels.map(channel => (
+            <MenuItem className={channel === selectedChannel} key={channel.id}># {channel.name}</MenuItem>
+          ))}
+        </Ul>
+      </ListContainer>
     )
   }
 }
@@ -35,7 +51,10 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-  return { channels: state.channels }
+  return { 
+    channels: state.channels,
+    selectedChannel: state.selectedChannel
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChannelList);
