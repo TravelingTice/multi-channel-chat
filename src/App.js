@@ -10,7 +10,6 @@ const LeftPanel = styled(Col)`
 `;
 
 const RightPanel = styled(Col)`
-  background-color: #323031;
   min-height: 100vh;
 `;
 

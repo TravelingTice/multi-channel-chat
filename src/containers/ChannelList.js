@@ -32,13 +32,18 @@ class ChannelList extends React.Component {
   }
 
   render () {
-    const { channels, selectedChannel } = this.props;
+    const { channels, selectedChannel, setSelectedChannel } = this.props;
     return (
       <ListContainer>
         <h3>Channels</h3>
         <Ul>
           {channels.map(channel => (
-            <MenuItem className={channel === selectedChannel} key={channel.id}># {channel.name}</MenuItem>
+            <MenuItem 
+              onClick={() => setSelectedChannel(channel)}
+              className={channel === selectedChannel}
+              key={channel.id}>
+                # {channel.name}
+            </MenuItem>
           ))}
         </Ul>
       </ListContainer>
