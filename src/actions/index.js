@@ -1,8 +1,5 @@
-import generateId from '../helpers/generateId';
-
 export const SET_MESSAGES = 'SET_MESSAGES';
 export const SET_CHANNELS = 'SET_CHANNELS';
-export const SET_SELECTED_CHANNEL = 'SET_SELECTED_CHANNEL';
 export const SEND_MESSAGE = 'SEND_MESSAGE';
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 
@@ -33,13 +30,6 @@ export function setChannels() {
         payload: data
       }
     });
-}
-
-export function setSelectedChannel(channel) {
-  return {
-    type: SET_SELECTED_CHANNEL,
-    payload: channel
-  }
 }
 
 export function sendMessage(content, currentUser, selectedChannel) {

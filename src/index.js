@@ -18,22 +18,19 @@ import reduxPromiseMiddleware from 'redux-promise';
 // import reducers
 import messagesReducer from './reducers/messagesReducer';
 import channelsReducer from './reducers/channelsReducer';
-import selectedChannelReducer from './reducers/selectedChannelReducer';
 import currentUserReducer from './reducers/currentUserReducer';
 
 // combine reducers
 const reducers = combineReducers({
   messages: messagesReducer,
   channels: channelsReducer,
-  selectedChannel: selectedChannelReducer,
   currentUser: currentUserReducer
 });
 
 const store = {
   currentUser: null,
   messages: [],
-  channels: [],
-  selectedChannel: null
+  channels: []
 }
 
 const composeEnhancers =

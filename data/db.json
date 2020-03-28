@@ -4,66 +4,66 @@
       "id": 1,
       "author": "Tice",
       "content": "Hey there! Thanks for coming on! 😁",
-      "channel": 1
+      "channel": "main"
     },
     {
       "id": 2,
       "author": "Jolanda",
       "content": "No worries 🦐",
-      "channel": 1
+      "channel": "main"
     },
     {
       "content": "Hoi",
       "author": "Tice",
-      "channel": 1,
+      "channel": "main",
       "id": 3
     },
     {
       "content": "Moge",
       "author": null,
-      "channel": 1,
+      "channel": "main",
       "id": 4
     },
     {
       "content": "Hallo",
       "author": "Tice",
-      "channel": 1,
+      "channel": "main",
       "id": 5
     },
     {
       "content": "Moge",
       "author": "Tice",
-      "channel": 1,
+      "channel": "main",
       "id": 6
     },
     {
       "content": "Hallo",
       "author": "Tice",
-      "channel": 1,
+      "channel": "main",
       "id": 7
     },
     {
       "content": "Moge",
       "author": "Tice",
-      "channel": 1,
+      "channel": "main",
       "id": 8
     },
     {
       "content": "Hello everyone! This is the first message sent here",
       "author": "Tice",
-      "channel": 2,
+      "channel": "development",
       "id": 9
     },
     {
       "content": "How is everyone?",
       "author": "Tice",
-      "channel": 1,
+      "channel": "development",
       "id": 10
     },
     {
       "content": "Let's push this shit to production!",
       "author": "Nattetijs",
-      "channel": 3,
+      "channel": "production",
       "id": 11
     }
   ],

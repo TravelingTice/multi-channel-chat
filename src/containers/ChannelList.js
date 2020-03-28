@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { setChannels, setSelectedChannel } from '../actions';
+import { setChannels } from '../actions';
 
 const ListContainer = styled.div`
   padding: 20px;
@@ -32,7 +32,7 @@ class ChannelList extends React.Component {
   }
 
   render () {
-    const { channels, selectedChannel, setSelectedChannel } = this.props;
+    const { channels, channelFromParams } = this.props;
     return (
       <ListContainer>
         <h3>Channels</h3>
@@ -40,8 +40,8 @@ class ChannelList extends React.Component {
           {channels.map(channel => (
             <MenuItem 
               key={channel.id}
-              onClick={() => setSelectedChannel(channel)}
-              className={channel === selectedChannel}>
+              onClick={() => console.log('click')}
+              className={(channel.name === channelFromParams) && 'active'}>
                 # {channel.name}
             </MenuItem>
           ))}
@@ -52,13 +52,12 @@ class ChannelList extends React.Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ setChannels, setSelectedChannel }, dispatch);
+  return bindActionCreators({ setChannels }, dispatch);
 }
 
 function mapStateToProps(state) {
   return { 
-    channels: state.channels,
-    selectedChannel: state.selectedChannel
+    channels: state.channels
   }
 }
 

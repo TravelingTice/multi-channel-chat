@@ -41,11 +41,10 @@ class MessageList extends React.Component {
   }
 
   render () {
-    const { messages, selectedChannel } = this.props;
-    if (!selectedChannel) return <p>Please select a channel</p>;
+    const { messages, channelFromParams } = this.props;
 
     // filter messages per channel
-    const channelMessages = messages.filter(message => message.channel === selectedChannel.id );
+    const channelMessages = messages.filter(message => message.channel === channelFromParams);
 
     if (!channelMessages.length) return <p>Be the first one to write a message here!</p>;
 
@@ -65,8 +64,7 @@ class MessageList extends React.Component {
 
 function mapStateToProps(state) {
   return { 
-    messages: state.messages,
-    selectedChannel: state.selectedChannel
+    messages: state.messages
   }
 }
 
