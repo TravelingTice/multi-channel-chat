@@ -7,6 +7,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import global styles
 import './index.scss';
 
+// import router stuff
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { createBrowserHistory as history } from 'history';
+
 // import redux stuff
 import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
@@ -47,7 +51,12 @@ const enhancer = composeEnhancers(
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={createStore(reducers, store, enhancer)}>
-      <App />
+      <Router history={history}>
+        <Switch>
+          <Route path="/:channel" component={App} />
+          <Redirect from="/" to="/main" />
+        </Switch>
+      </Router>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
