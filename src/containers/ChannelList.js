@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { setChannels } from '../actions';
+import { setChannels, setSelectedChannel } from '../actions';
 
 const ListContainer = styled.div`
   padding: 20px;
@@ -39,9 +39,9 @@ class ChannelList extends React.Component {
         <Ul>
           {channels.map(channel => (
             <MenuItem 
+              key={channel.id}
               onClick={() => setSelectedChannel(channel)}
-              className={channel === selectedChannel}
-              key={channel.id}>
+              className={channel === selectedChannel}>
                 # {channel.name}
             </MenuItem>
           ))}
@@ -52,7 +52,7 @@ class ChannelList extends React.Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ setChannels }, dispatch);
+  return bindActionCreators({ setChannels, setSelectedChannel }, dispatch);
 }
 
 function mapStateToProps(state) {

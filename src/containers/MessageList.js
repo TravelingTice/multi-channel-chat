@@ -23,7 +23,7 @@ class MessageList extends React.Component {
     return (
       <Ul>
         {messages.map(message => (
-          <Message>
+          <Message key={message.id}>
             {message.content}
           </Message>
         ))}
