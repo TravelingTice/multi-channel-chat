@@ -24,8 +24,8 @@ const RightPanel = styled(Col)`
 class App extends React.Component {
   componentDidMount () {
     // ask user for name
-    const username = prompt("what is your name?");
-    this.props.setCurrentUser(username);  
+    // const username = prompt("what is your name?");
+    this.props.setCurrentUser('Tice');  
   }
 
   render () {
@@ -33,11 +33,11 @@ class App extends React.Component {
       <Container fluid>
         <Row>
           <LeftPanel xs="3">
-            <ChannelList />
+            <ChannelList channelFromParams={this.props.match.params.channel} />
           </LeftPanel>
 
           <RightPanel xs="9">
-            <MessageList />
+            <MessageList channelFromParams={this.props.match.params.channel} />
             {this.props.selectedChannel && (
               <SendMessage />
             )}
