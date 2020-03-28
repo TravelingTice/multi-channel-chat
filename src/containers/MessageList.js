@@ -30,7 +30,11 @@ class MessageList extends React.Component {
     this.scrollToBottom();
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
+    // check if the channel has changed, then refetch messages
+    if (prevProps.channelFromParams !== this.props.channelFromParams) {
+      this.props.fetchMessages(this.props.channelFromParams);
+    }
     this.scrollToBottom();
   }
 
