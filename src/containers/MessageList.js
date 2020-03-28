@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { setMessages } from '../actions';
+import { fetchMessages } from '../actions';
 
 const Ul = styled.ul`
   overflow-y: scroll;
@@ -26,7 +26,7 @@ class MessageList extends React.Component {
   } 
 
   componentDidMount() {
-    this.props.setMessages();
+    this.props.fetchMessages(this.props.channelFromParams);
     this.scrollToBottom();
   }
 
@@ -41,16 +41,13 @@ class MessageList extends React.Component {
   }
 
   render () {
-    const { messages, channelFromParams } = this.props;
+    const { messages } = this.props;
 
-    // filter messages per channel
-    const channelMessages = messages.filter(message => message.channel === channelFromParams);
-
-    if (!channelMessages.length) return <p>Be the first one to write a message here!</p>;
+    if (!messages.length) return <p>Be the first one to write a message here!</p>;
 
     return (
       <Ul>
-        {channelMessages.map(message => (
+        {messages.map(message => (
           <Message key={message.id}>
             <p>{message.content}</p>
             <span>- {message.author}</span>
@@ -69,7 +66,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ setMessages }, dispatch);
+  return bindActionCreators({ fetchMessages }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MessageList);

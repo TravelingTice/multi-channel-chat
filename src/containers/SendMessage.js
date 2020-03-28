@@ -4,7 +4,7 @@ import { Form, FormGroup, Input } from 'reactstrap';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { sendMessage, setSelectedChannel } from '../actions';
+import { sendMessage } from '../actions';
 
 const StyledInput = styled(Input)`
   background-color: #3D3B3C;
@@ -28,9 +28,9 @@ class SendMessage extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     const { message } = this.state;
-    const { sendMessage, currentUser, selectedChannel } = this.props;
+    const { sendMessage, currentUser, channelFromParams } = this.props;
     if (message) {
-      sendMessage(message, currentUser, selectedChannel);
+      sendMessage(message, currentUser, channelFromParams);
       this.setState({ message: '' });
     }
   }
@@ -52,8 +52,7 @@ class SendMessage extends React.Component {
 
 function mapStateToProps(state) {
   return { 
-    currentUser: state.currentUser,
-    selectedChannel: state.selectedChannel
+    currentUser: state.currentUser
   }
 }
 

@@ -9,7 +9,6 @@ import './index.scss';
 
 // import router stuff
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import { createBrowserHistory as history } from 'history';
 
 // import redux stuff
 import { Provider } from 'react-redux';
@@ -48,7 +47,7 @@ const enhancer = composeEnhancers(
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={createStore(reducers, store, enhancer)}>
-      <Router history={history}>
+      <Router>
         <Switch>
           <Route path="/:channel" component={App} />
           <Redirect from="/" to="/main" />

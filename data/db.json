@@ -65,6 +65,23 @@
       "author": "Nattetijs",
       "channel": "production",
       "id": 11
+    },
+    {
+      "content": "Hi",
+      "author": "Tice",
+      "id": 12
+    },
+    {
+      "content": "Goedendag",
+      "author": "Tice",
+      "channel": "main",
+      "id": 13
+    },
+    {
+      "content": "Moge",
+      "author": "Tice",
+      "channel": "main",
+      "id": 14
     }
   ],
   "channels": [

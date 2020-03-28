@@ -38,7 +38,7 @@ class App extends React.Component {
 
           <RightPanel xs="9">
             <MessageList channelFromParams={this.props.match.params.channel} />
-              <SendMessage />
+              <SendMessage channelFromParams={this.props.match.params.channel} />
           </RightPanel>
         </Row>
       </Container>
