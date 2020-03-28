@@ -5,6 +5,10 @@ import ChannelList from './containers/ChannelList';
 import MessageList from './containers/MessageList';
 import SendMessage from './containers/SendMessage';
 
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { setCurrentUser } from './actions';
+
 const LeftPanel = styled(Col)`
   background-color: #3D3B3C;
   min-height: 100vh;
@@ -17,21 +21,33 @@ const RightPanel = styled(Col)`
   padding: 20px;
 `;
 
-const App = () => {
-  return (
-    <Container fluid>
-      <Row>
-        <LeftPanel xs="3">
-          <ChannelList />
-        </LeftPanel>
+class App extends React.Component {
+  componentDidMount () {
+    // ask user for name
+    const username = prompt("what is your name?");
+    this.props.setCurrentUser(username);  
+  }
 
-        <RightPanel xs="9">
-          <MessageList />
-          <SendMessage />
-        </RightPanel>
-      </Row>
-    </Container>
-  );
+  render () {
+    return (
+      <Container fluid>
+        <Row>
+          <LeftPanel xs="3">
+            <ChannelList />
+          </LeftPanel>
+
+          <RightPanel xs="9">
+            <MessageList />
+            <SendMessage />
+          </RightPanel>
+        </Row>
+      </Container>
+    )
+  }
 }
 
-export default App;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ setCurrentUser }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(App);

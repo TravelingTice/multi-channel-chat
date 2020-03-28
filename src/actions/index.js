@@ -1,9 +1,11 @@
+import generateId from '../helpers/generateId';
+
 export const SET_MESSAGES = 'SET_MESSAGES';
 export const SET_CHANNELS = 'SET_CHANNELS';
 export const SET_SELECTED_CHANNEL = 'SET_SELECTED_CHANNEL';
 export const SEND_MESSAGE = 'SEND_MESSAGE';
+export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 
-import generateId from '../helpers/generateId';
 
 const API = 'http://localhost:3000';
 
@@ -62,4 +64,11 @@ export function sendMessage(content, currentUser, selectedChannel) {
         payload: message
       }
     });
+}
+
+export function setCurrentUser(name) {
+  return {
+    type: SET_CURRENT_USER,
+    payload: { name }
+  }
 }
