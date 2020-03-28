@@ -38,9 +38,7 @@ class App extends React.Component {
 
           <RightPanel xs="9">
             <MessageList channelFromParams={this.props.match.params.channel} />
-            {this.props.selectedChannel && (
               <SendMessage />
-            )}
           </RightPanel>
         </Row>
       </Container>
@@ -48,14 +46,8 @@ class App extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    selectedChannel: state.selectedChannel
-  }
-}
-
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ setCurrentUser }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(App);
