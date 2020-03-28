@@ -4,6 +4,8 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 // import bootstrap css
 import 'bootstrap/dist/css/bootstrap.min.css';
+// import global styles
+import './index.scss';
 
 // import redux stuff
 import { Provider } from 'react-redux';
