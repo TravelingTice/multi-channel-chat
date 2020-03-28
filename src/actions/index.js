@@ -45,7 +45,6 @@ export function setSelectedChannel(channel) {
 export function sendMessage(content, currentUser, selectedChannel) {
   // make the message
   const message = {
-    id: generateId(),
     content,
     author: currentUser.name,
     channel: selectedChannel.id
@@ -54,14 +53,16 @@ export function sendMessage(content, currentUser, selectedChannel) {
   // save in db
   return fetch(`${API}/messages`, {
     method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
     body: JSON.stringify(message)
   })
     .then(res => res.json())
     .then(data => {
-      console.log(data);
       return {
         type: SEND_MESSAGE,
-        payload: message
+        payload: data
       }
     });
 }

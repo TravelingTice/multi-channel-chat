@@ -19,27 +19,55 @@ const Message = styled.li`
 `;
 
 class MessageList extends React.Component {
+  // create ref for messages end
+  constructor(props) {
+    super(props);
+    this.messageEndRef = React.createRef();
+  } 
+
   componentDidMount() {
     this.props.setMessages();
+    this.scrollToBottom();
+  }
+
+  componentDidUpdate() {
+    this.scrollToBottom();
+  }
+
+  scrollToBottom = () => {
+    if (this.messageEndRef.current) {
+      this.messageEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 
   render () {
-    const { messages } = this.props;
+    const { messages, selectedChannel } = this.props;
+    if (!selectedChannel) return <p>Please select a channel</p>;
+
+    // filter messages per channel
+    const channelMessages = messages.filter(message => message.channel === selectedChannel.id );
+
+    if (!channelMessages.length) return <p>Be the first one to write a message here!</p>;
+
     return (
       <Ul>
-        {messages.map(message => (
+        {channelMessages.map(message => (
           <Message key={message.id}>
             <p>{message.content}</p>
             <span>- {message.author}</span>
           </Message>
         ))}
+        <li style={{height: 0}} ref={this.messageEndRef}></li>
       </Ul>
     );
   }
 }
 
 function mapStateToProps(state) {
-  return { messages: state.messages }
+  return { 
+    messages: state.messages,
+    selectedChannel: state.selectedChannel
+  }
 }
 
 function mapDispatchToProps(dispatch) {

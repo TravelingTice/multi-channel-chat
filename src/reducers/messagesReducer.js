@@ -7,7 +7,7 @@ export default function(state, action) {
     case SET_MESSAGES:
       return action.payload;
     case SEND_MESSAGE:
-      return state + [action.payload]
+      return state.concat(action.payload);
     default:
       return state;
   }

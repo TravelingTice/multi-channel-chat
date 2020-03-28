@@ -31,6 +31,7 @@ class SendMessage extends React.Component {
     const { sendMessage, currentUser, selectedChannel } = this.props;
     if (message) {
       sendMessage(message, currentUser, selectedChannel);
+      this.setState({ message: '' });
     }
   }
   render () {
