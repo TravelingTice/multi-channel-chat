@@ -1,14 +1,13 @@
+import { API } from '../config';
+
 export const SET_MESSAGES = 'SET_MESSAGES';
 export const SET_CHANNELS = 'SET_CHANNELS';
 export const SEND_MESSAGE = 'SEND_MESSAGE';
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 
-
-const API = 'http://localhost:3000';
-
-export function fetchMessages(channelName) {
+export function fetchMessages(channel) {
   // fetch messages from db
-  return fetch(`${API}/messages?channel=${channelName}`)
+  return fetch(`${API}/channels/${channel.id}/messages`)
     .then(res => res.json())
     .then(data => {
 
@@ -32,12 +31,12 @@ export function setChannels() {
     });
 }
 
-export function sendMessage(content, currentUser, channelName) {
+export function sendMessage(content, currentUser, channel) {
   // make the message
   const message = {
     content,
     author: currentUser.name,
-    channel: channelName
+    channel
   }
 
   // save in db

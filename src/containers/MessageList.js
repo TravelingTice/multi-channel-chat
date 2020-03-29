@@ -26,14 +26,19 @@ class MessageList extends React.Component {
   } 
 
   componentDidMount() {
-    this.props.fetchMessages(this.props.channelFromParams);
+    if (this.props.channels.length) {
+      this.props.fetchMessages(this.props.selectedChannel);
+    }
     this.scrollToBottom();
   }
 
   componentDidUpdate(prevProps) {
     // check if the channel has changed, then refetch messages
-    if (prevProps.channelFromParams !== this.props.channelFromParams) {
-      this.props.fetchMessages(this.props.channelFromParams);
+    // check if channels are already loaded
+    if (this.props.channels.length) {
+      if (prevProps.selectedChannel !== this.props.selectedChannel) {
+        this.props.fetchMessages(this.props.selectedChannel);
+      }
     }
     this.scrollToBottom();
   }
@@ -63,9 +68,11 @@ class MessageList extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state, props) {
   return { 
-    messages: state.messages
+    messages: state.messages,
+    channels: state.channels,
+    selectedChannel: state.channels.find(channel => channel.name === props.channelFromParams)
   }
 }
 

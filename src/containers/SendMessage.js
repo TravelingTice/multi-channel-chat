@@ -28,9 +28,9 @@ class SendMessage extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     const { message } = this.state;
-    const { sendMessage, currentUser, channelFromParams } = this.props;
+    const { sendMessage, currentUser, currentChannel } = this.props;
     if (message) {
-      sendMessage(message, currentUser, channelFromParams);
+      sendMessage(message, currentUser, currentChannel);
       this.setState({ message: '' });
     }
   }
@@ -50,9 +50,10 @@ class SendMessage extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state, props) {
   return { 
-    currentUser: state.currentUser
+    currentUser: state.currentUser,
+    currentChannel: state.channels.find(channel => channel.name === props.channelFromParams)
   }
 }
 
