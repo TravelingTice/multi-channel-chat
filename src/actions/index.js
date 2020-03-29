@@ -36,7 +36,7 @@ export function sendMessage(content, currentUser, channel) {
   const message = {
     content,
     author: currentUser.name,
-    channel
+    channel_id: channel.id
   }
 
   // save in db
